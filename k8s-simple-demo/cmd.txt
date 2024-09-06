@@ -1,0 +1,12 @@
+docker build -t namnnh/demo-subscriber:latest .
+docker push namnnh/demo-subscriber:latest
+
+docker build -t namnnh/demo-publisher:latest .
+docker push namnnh/demo-publisher:latest
+
+kubectl apply -f mqtt-deployment.yaml
+kubectl apply -f publisher-deployment.yaml
+kubectl apply -f subscriber-deployment.yaml
+
+
+kubectl rollout restart deployment [depl_name]

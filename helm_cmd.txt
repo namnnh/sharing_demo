@@ -1,0 +1,5 @@
+ helm create <helm-repo-name>
+ helm list
+ helm install <release-name> <dir_path>
+ helm upgrade <release-name> <dir_path>
+ helm uninstall <release-name>

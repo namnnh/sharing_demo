@@ -1,0 +1,21 @@
+# values.yaml
+
+deployment:
+  name: demo
+
+service:
+  name: demo-service
+  port: 3000
+  
+image:
+  repository: hhaluk/demo
+  tag: "0.0.1"
+  pullPolicy: Always
+
+env:
+  NODE_ENV: production
+
+container:
+  port: 3000
+
+serviceAccountName: default

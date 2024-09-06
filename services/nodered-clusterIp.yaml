@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodered-clusterip
+  labels:
+    app: node-red-clusterIp
+spec:
+   selector:
+    io.kompose.service: nodered
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: ClusterIP

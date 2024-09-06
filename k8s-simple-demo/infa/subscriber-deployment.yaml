@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-subscriber
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodejs-subscriber
+  template:
+    metadata:
+      labels:
+        app: nodejs-subscriber
+    spec:
+      containers:
+      - name: nodejs-subscriber
+        image: namnnh/demo-subscriber:latest
+        ports:
+        - containerPort: 3000

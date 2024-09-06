@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-publisher
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nodejs-publisher
+  template:
+    metadata:
+      labels:
+        app: nodejs-publisher
+    spec:
+      containers:
+      - name: nodejs-publisher
+        image: namnnh/demo-publisher:latest
+        ports:
+        - containerPort: 3001

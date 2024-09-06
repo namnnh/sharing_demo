@@ -1,0 +1,16 @@
+Access Key
+token-4mc9q
+
+Secret Key
+qnzxgd4j95rcmlhx2cf7nkmfg4tjd22kh9j44hf6gx8jptwj4ft5hm
+
+Bearer Token
+token-4mc9q:qnzxgd4j95rcmlhx2cf7nkmfg4tjd22kh9j44hf6gx8jptwj4ft5hm
+
+kubectl get pods -n <namespace>
+
+kubectl port-forward -n <namespace> <pod-name> 3000:3000
+
+docker build -t your_dockerhub_username/nodered:latest -f <file_path>
+
+kubectl apply -f <file_path>
