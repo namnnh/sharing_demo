@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mqtt
+spec:
+  replicas: {{ .Values.mqtt.replicas }}
+  selector:
+    matchLabels:
+      app: mqtt
+  template:
+    metadata:
+      labels:
+        app: mqtt
+    spec:
+      containers:
+      - name: mqtt-broker
+        image: eclipse-mosquitto
+        ports:
+        - containerPort: 1883
+          protocol: TCP
+        - containerPort: 8083
+          protocol: TCP
+        - containerPort: 18083
+          protocol: TCP
+        volumeMounts:
+        - name: mosquitto-config
+          mountPath: /mosquitto/config/mosquitto.conf
+          subPath: mosquitto.conf
+      volumes:
+        - name: mosquitto-config
+          configMap:
+            name: mosquitto-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mqtt
+spec:
+  type: ClusterIP
+  selector:
+    app: mqtt
+  ports:
+    - name: "1883"
+      port: 1883
+      targetPort: 1883
+    - name: "8083"
+      port: 8083
+      targetPort: 8083
+    - name: "18083"
+      port: 18083
+      targetPort: 18083
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mosquitto-config
+data:
+  mosquitto.conf: |
+    listener 1883
+    socket_domain ipv4
+    allow_anonymous true

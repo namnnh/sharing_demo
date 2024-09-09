@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-subscriber
+spec:
+  replicas: {{ .Values.subscriber.replicas }}
+  selector:
+    matchLabels:
+      app: nodejs-subscriber
+  template:
+    metadata:
+      labels:
+        app: nodejs-subscriber
+    spec:
+      containers:
+      - name: nodejs-subscriber
+        image: {{ .Values.subscriber.image }}
+        ports:
+        - containerPort: 3000
