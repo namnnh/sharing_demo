@@ -28,7 +28,7 @@ services:
 ########################## Grafana #######################
 ##########################################################
   grafana:
-    image: grafana/grafana:latest
+    image: namnnh/grafana_custom
     container_name: grafana
     restart: unless-stopped
     ports:
@@ -36,8 +36,6 @@ services:
     networks:
       - main-net
     volumes:
-      - ./grafana/provisioning/:/etc/grafana/provisioning/
-      - ./grafana/dashboards/:/var/lib/grafana/dashboards/
       - ./grafana/grafana.ini:/etc/grafana/grafana.ini
     depends_on:
       influxdb:
@@ -69,7 +67,7 @@ services:
 ######################### NodeRed ########################
 ##########################################################
   nodered:
-    image: nodered/node-red:latest
+    image: namnnh/nodered_custom
     container_name: nodered
     environment:
       - TZ=Africa/Casablanca
@@ -78,8 +76,6 @@ services:
     networks:
       - main-net
       - nodered-net
-    volumes:
-      - ./nodered/data:/data
     healthcheck:
       interval: 5s
       timeout: 3s
@@ -121,5 +117,3 @@ networks:
   emqx-net:
   spB-net:
   nodered-net:
-
-volumes:
