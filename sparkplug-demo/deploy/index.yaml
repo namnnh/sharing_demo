@@ -9,6 +9,6 @@ entries:
     name: sparkplug-sys
     type: application
     urls:
-    - https://github.com/namnnh/sharing_demo/tree/master/sparkplug-demo/deploy/sparkplug-sys-0.1.0.tgz
+    - https://namnnh.github.io/sharing_demo/sparkplug-demo/deploy/sparkplug-sys-0.1.0.tgz
     version: 0.1.0
 generated: "2024-09-10T16:29:59.8271912+07:00"
