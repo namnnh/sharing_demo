@@ -3,3 +3,7 @@
  helm install <release-name> <dir_path>
  helm upgrade <release-name> <dir_path>
  helm uninstall <release-name>
+
+ deployment
+ helm package ./your-helm-chart
+ helm repo index . --url https://your-username.github.io/your-helm-charts/

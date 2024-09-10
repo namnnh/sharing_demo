@@ -15,5 +15,10 @@ spec:
       containers:
       - name: nodejs-subscriber
         image: {{ .Values.subscriber.image }}
+        env:
+          - name: MQTT_BROKER_URL
+            value: {{ .Values.env.MQTT_BROKER_URL | quote }}
+          - name: MQTT_CHANNEL
+            value: {{ .Values.env.MQTT_CHANNEL | quote }}
         ports:
         - containerPort: 3000

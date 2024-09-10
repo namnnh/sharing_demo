@@ -11,4 +11,5 @@ spec:
       targetPort: 1880 
       nodePort: 31880
   selector:
-    io.kompose.service: nodered
+    app.kubernetes.io/instance: emqx-mqtt
+    app.kubernetes.io/name: emqx

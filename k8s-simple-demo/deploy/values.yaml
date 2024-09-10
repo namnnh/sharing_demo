@@ -2,9 +2,13 @@ mqtt:
   replicas: 1
 
 publisher:
-  replicas: 3
+  replicas: 5
   image: namnnh/demo-publisher:latest
 
 subscriber:
-  replicas: 1
+  replicas: 3
   image: namnnh/demo-subscriber:latest
+
+env:
+  MQTT_BROKER_URL: "mqtt://emqx-headless.mqtt-emqx.svc.cluster.local:1883"
+  MQTT_CHANNEL: "demo-channel"
